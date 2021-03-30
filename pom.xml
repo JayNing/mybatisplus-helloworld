@@ -43,6 +43,24 @@
       <artifactId>mybatis-plus-boot-starter</artifactId>
       <version>3.4.2</version>
     </dependency>
+    <!--代码自动生成-->
+    <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-generator</artifactId>
+      <version>3.4.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity-engine-core</artifactId>
+      <version>2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.31</version>
+    </dependency>
+
     <!-- 实现对数据库连接池的自动化配置 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
