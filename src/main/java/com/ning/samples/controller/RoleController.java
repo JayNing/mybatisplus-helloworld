@@ -4,11 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ning.samples.entity.Role;
 import com.ning.samples.service.RoleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +20,7 @@ import java.util.function.Consumer;
  *
  * @author ningjianjian
  */
+@Api(tags = "角色管理")
 @RestController
 @RequestMapping("/role")
 public class RoleController {
@@ -28,18 +28,21 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @RequestMapping("query")
+    @ApiOperation("列表条件查询")
+    @GetMapping("query")
     public @ResponseBody List<Role> query(Role role){
         QueryWrapper<Role> query = Wrappers.query(role);
         return roleService.list(query);
     }
 
-    @RequestMapping("add")
-    public void add(Role role){
+    @ApiOperation(value = "新增", notes = "insert使共用")
+    @PostMapping("add")
+    public void add(@RequestBody Role role){
         roleService.save(role);
     }
 
-    @RequestMapping("batchAdd")
+    @ApiOperation("批量新增")
+    @PostMapping("batchAdd")
     public void batchAdd(){
         List<Role> roleList = new ArrayList<>();
         for (long i = 1 ;i <= 5; i++){

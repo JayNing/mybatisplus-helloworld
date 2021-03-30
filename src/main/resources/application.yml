@@ -13,3 +13,12 @@ spring:
 
 server:
   port:8080
+
+swagger:
+  base-path: /**
+  base-package: 'com.ning.samples'
+  title: 'spring-boot-swagger'
+  description: '基于Swagger构建的SpringBoot RESTApi 文档'
+  version: '1.0'
+  contact:
+    name: 'JayNing'

@@ -3,10 +3,7 @@ package com.ning.samples.controller;
 import com.ning.samples.entity.User;
 import com.ning.samples.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,22 +21,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/query")
+    @GetMapping("/query")
     public @ResponseBody List<User> queryUser(User user){
         return userService.queryUser(user);
     }
 
-    @RequestMapping("/add")
+    @PostMapping("/add")
     public void addUser(User user){
         userService.addUser(user);
     }
 
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public void updateUser(User user){
         userService.updateUser(user);
     }
 
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     public void deleteUser(@RequestParam("id") Long id){
         User user = new User();
         user.setId(id);
